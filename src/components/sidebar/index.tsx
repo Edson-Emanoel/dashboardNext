@@ -1,16 +1,97 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
-import { Home, MenuIcon, Package, Settings2, ShoppingBag, Users } from "lucide-react";
+import { Home, LogOut, MenuIcon, Package, Settings2, ShoppingBag, Users } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 
 export function Sidebar() {
       return(
        <div className="flex w-full flex-col bg-muted/40">
             
             <aside
-                  className="fixed inset-y-0 left-0 z-10 hidden w-14 border-r bg-background sm:flex"
+                  className="fixed inset-y-0 left-0 z-10 hidden w-14 border-r bg-background sm:flex flex-col"
             >
-                  
+                  <nav className="flex flex-col items-center gap-4 px-2 py-5">
+                        <TooltipProvider>             
+                              <Link
+                                    href="#"
+                                    className="flex w-9 h-9 shrink-0 items-center justify-center bg-primary text-primary-foreground rounded-full"
+                              >
+                                    <Package className="h-4 w-4" />
+                                    <span className="sr-only">Dashboard Avatar</span>
+                              </Link>
+
+                              <Tooltip>
+                                    <TooltipTrigger asChild>
+                                          <Link
+                                                href="#"
+                                                className="flex w-9 h-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground"
+                                          >
+                                                <Home className="h-4 w-4" />
+                                                <span className="sr-only">Início</span>
+                                          </Link>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="left">Início</TooltipContent>
+                              </Tooltip>
+
+                              <Tooltip>
+                                    <TooltipTrigger asChild>
+                                          <Link
+                                                href="#"
+                                                className="flex w-9 h-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground"
+                                          >
+                                                <ShoppingBag className="h-4 w-4" />
+                                                <span className="sr-only">Pedidos</span>
+                                          </Link>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="left">Pedidos</TooltipContent>
+                              </Tooltip>
+
+                              <Tooltip>
+                                    <TooltipTrigger asChild>
+                                          <Link
+                                                href="#"
+                                                className="flex w-9 h-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground"
+                                          >
+                                                <Users className="h-4 w-4" />
+                                                <span className="sr-only">Usuarios</span>
+                                          </Link>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="left">Usuarios</TooltipContent>
+                              </Tooltip>
+
+                              <Tooltip>
+                                    <TooltipTrigger asChild>
+                                          <Link
+                                                href="#"
+                                                className="flex w-9 h-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground"
+                                          >
+                                                <Settings2 className="h-4 w-4" />
+                                                <span className="sr-only">Configurações</span>
+                                          </Link>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="left">Configurações</TooltipContent>
+                              </Tooltip>
+                        </TooltipProvider>
+                  </nav>
+
+                  <nav className="mt-auto flex flex-col items-center gap-4 px-2 py-5">
+                        <TooltipProvider>
+                              
+                              <Tooltip>
+                                    <TooltipTrigger asChild>
+                                          <Link
+                                                href="#"
+                                                className="flex w-9 h-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground"
+                                          >
+                                                <LogOut className="h-4 w-4 text-red-500" />
+                                                <span className="sr-only">Sair</span>
+                                          </Link>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="left">Sair</TooltipContent>
+                              </Tooltip>
+                        </TooltipProvider>
+                  </nav>
             </aside>
 
             <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
